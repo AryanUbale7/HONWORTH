@@ -7,8 +7,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "./Button";
 
 const lifeCoverSchema = z.object({
-  annualIncome: z.number({ invalid_type_error: "Must be a number" }).min(100000, "Minimum ₹1,00,000"),
-  existingCover: z.number({ invalid_type_error: "Must be a number" }).min(0, "Cannot be negative"),
+  annualIncome: z.number({ message: "Must be a number" }).min(100000, "Minimum ₹1,00,000"),
+  existingCover: z.number({ message: "Must be a number" }).min(0, "Cannot be negative"),
 });
 
 type LifeCoverFormData = z.infer<typeof lifeCoverSchema>;

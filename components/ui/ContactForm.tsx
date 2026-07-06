@@ -12,8 +12,8 @@ const contactSchema = z.object({
   email: z.string().email("Invalid email address"),
   phone: z.string().regex(/^[0-9+\-\s()]{10,15}$/, "Valid phone number required"),
   message: z.string().min(10, "Message must be at least 10 characters"),
-  consent: z.literal(true, {
-    errorMap: () => ({ message: "You must agree to the privacy policy" }),
+  consent: z.boolean().refine((val) => val === true, {
+    message: "You must agree to the privacy policy",
   }),
   // Honeypot field - must remain empty
   _honey: z.string().max(0, "Invalid submission"),

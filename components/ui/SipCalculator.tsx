@@ -7,9 +7,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "./Button";
 
 const sipSchema = z.object({
-  monthlyAmount: z.number({ invalid_type_error: "Must be a number" }).min(500, "Minimum ₹500").max(10000000, "Amount too large"),
-  expectedReturn: z.number({ invalid_type_error: "Must be a number" }).min(1, "Minimum 1%").max(30, "Maximum 30%"),
-  durationYears: z.number({ invalid_type_error: "Must be a number" }).min(1, "Minimum 1 year").max(50, "Maximum 50 years"),
+  monthlyAmount: z.number({ message: "Must be a number" }).min(500, "Minimum ₹500").max(10000000, "Amount too large"),
+  expectedReturn: z.number({ message: "Must be a number" }).min(1, "Minimum 1%").max(30, "Maximum 30%"),
+  durationYears: z.number({ message: "Must be a number" }).min(1, "Minimum 1 year").max(50, "Maximum 50 years"),
 });
 
 type SipFormData = z.infer<typeof sipSchema>;
